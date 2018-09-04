@@ -51,6 +51,16 @@ public class EFColorSelectionView: UIView, EFColorView, EFColorViewDelegate {
             self.selectedView()?.color = color
         }
     }
+    
+    public var defaultColors: [UIColor] {
+        get {
+            return self.selectedView()?.defaultColors ?? []
+        }
+        set {
+            self.rgbColorView.defaultColors = newValue
+            self.hsbColorView.defaultColors = newValue
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

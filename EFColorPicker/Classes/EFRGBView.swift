@@ -38,6 +38,9 @@ public class EFRGBView: UIView, EFColorView {
     private var colorComponents: RGB = RGB(1, 1, 1, 1)
 
     weak public var delegate: EFColorViewDelegate?
+    
+    private var defaultColorsView: UICollectionView?
+    private var defaultColorDelegate = EFDefaultColors()
 
     public var color: UIColor {
         get {
@@ -51,6 +54,16 @@ public class EFRGBView: UIView, EFColorView {
         set {
             colorComponents = EFRGBColorComponents(color: newValue)
             self.reloadData()
+        }
+    }
+    
+    public var defaultColors: [UIColor] {
+        get {
+            return defaultColorDelegate.colors
+        }
+        set {
+            defaultColorDelegate.setColors(colors: newValue)
+            print("EFRGBView", newValue)
         }
     }
 
@@ -99,9 +112,22 @@ public class EFRGBView: UIView, EFColorView {
             )
             tmp.append(colorComponentView)
         }
+        print("defaultColorDelegate", defaultColorDelegate.colors)
+        if defaultColorDelegate.colors.count > 0 {
+            defaultColorsView = UICollectionView()
+            let layout = UICollectionViewFlowLayout()
+            layout.sectionInset = UIEdgeInsets(top: 8, left: 2, bottom: 2, right: 2)
+            layout.itemSize = CGSize(width: 40, height: 40)
+            defaultColorsView?.collectionViewLayout = layout
+            defaultColorsView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: EFDefaultColors.cellId)
+            defaultColorsView?.delegate = defaultColorDelegate
+            defaultColorsView?.dataSource = defaultColorDelegate
+            self.addSubview(defaultColorsView!)
+        }
 
         colorComponentViews = tmp
         self.ef_installConstraints()
+        defaultColorsView?.frame = CGRect(x: 0, y: 300, width: 200, height: 200)
     }
 
     @objc @IBAction private func ef_colorComponentDidChangeValue(_ sender: EFColorComponentView) {

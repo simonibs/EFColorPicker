@@ -50,6 +50,10 @@ public class EFColorSelectionViewController: UIViewController, EFColorViewDelega
             self.colorSelectionView().color = newValue
         }
     }
+    
+    public func setDefaultColors(_ defaultColors: [UIColor]) {
+        self.colorSelectionView().defaultColors = defaultColors
+    }
 
     // Whether colorTextField will hide, default is `true`
     public var isColorTextFieldHidden: Bool {

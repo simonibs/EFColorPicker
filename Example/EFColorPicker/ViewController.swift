@@ -31,6 +31,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
 
     @IBOutlet weak var testButton: UIButton!
     var isColorTextFieldHidden: Bool = true
+    
+    let ds = DefaultColorsDelegateAndDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +46,28 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         testButton.setTitleColor(UIColor.black, for: .normal)
         testButton.setTitle("isColorTextFieldHidden: \(isColorTextFieldHidden)", for: .normal)
         testButton.addTarget(self, action: #selector(onTestButtonClick(_:)), for: .touchUpInside)
+        
+
+        
     }
 
     //
     @objc func onTestButtonClick(_ sender: UIButton) {
         isColorTextFieldHidden = !isColorTextFieldHidden
         testButton.setTitle("isColorTextFieldHidden: \(isColorTextFieldHidden)", for: .normal)
+        
+        //let frame = self.view.frame
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 2, bottom: 2, right: 2)
+        layout.itemSize = CGSize(width: 40, height: 40)
+        let numbersCollectionView = UICollectionView(frame: CGRect(x: 0, y: 200, width: self.view.frame.width, height: 200), collectionViewLayout: layout)
+        numbersCollectionView.backgroundColor = UIColor.white
+        numbersCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        ds.setColors(colors: DefaultColorsDelegateAndDataSource.defaultColors)
+        numbersCollectionView.delegate = ds
+        numbersCollectionView.dataSource = ds
+        self.view.addSubview(numbersCollectionView)
     }
 
     // Programmatically
@@ -70,6 +88,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         colorSelectionController.isColorTextFieldHidden = isColorTextFieldHidden
         colorSelectionController.delegate = self
         colorSelectionController.color = self.view.backgroundColor ?? UIColor.white
+        colorSelectionController.setDefaultColors([UIColor.black, UIColor.blue])
 
         if UIUserInterfaceSizeClass.compact == self.traitCollection.horizontalSizeClass {
             let doneBtn: UIBarButtonItem = UIBarButtonItem(

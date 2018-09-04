@@ -41,6 +41,8 @@ public class EFHSBView: UIView, EFColorView, UITextFieldDelegate {
     private var layoutConstraints: [NSLayoutConstraint] = []
 
     weak public var delegate: EFColorViewDelegate?
+    
+    private var defaultColorDelegate = EFDefaultColors()
 
     public var color: UIColor {
         get {
@@ -54,6 +56,15 @@ public class EFHSBView: UIView, EFColorView, UITextFieldDelegate {
         set {
             colorComponents = EFRGB2HSB(rgb: EFRGBColorComponents(color: newValue))
             self.reloadData()
+        }
+    }
+    
+    public var defaultColors: [UIColor] {
+        get {
+            return defaultColorDelegate.colors
+        }
+        set {
+            defaultColorDelegate.setColors(colors: newValue)
         }
     }
 
