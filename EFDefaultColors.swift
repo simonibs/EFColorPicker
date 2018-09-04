@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-class EFDefaultColors: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+public class EFDefaultColors: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var colors: [UIColor] = []
     
-    static let predefined = [
+    public static let predefined = [
         UIColor.white,
         UIColor.black,
         UIColor.red,
@@ -31,21 +31,25 @@ class EFDefaultColors: NSObject, UICollectionViewDelegate, UICollectionViewDataS
         self.colors = colors
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: EFDefaultColors.cellId, for: indexPath)
         cell.layer.borderWidth = CGFloat(0.5)
         cell.layer.borderColor = UIColor.gray.cgColor
         cell.layer.cornerRadius = 5
         cell.backgroundColor = colors[indexPath.row]
         return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected", indexPath.row, self.colors[indexPath.row])
     }
     
 }

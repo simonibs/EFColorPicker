@@ -64,6 +64,8 @@ public class EFRGBView: UIView, EFColorView {
         set {
             defaultColorDelegate.setColors(colors: newValue)
             print("EFRGBView", newValue)
+            defaultColorsView?.reloadData()
+            self.ef_installConstraints()
         }
     }
 
@@ -113,21 +115,21 @@ public class EFRGBView: UIView, EFColorView {
             tmp.append(colorComponentView)
         }
         print("defaultColorDelegate", defaultColorDelegate.colors)
-        if defaultColorDelegate.colors.count > 0 {
-            defaultColorsView = UICollectionView()
-            let layout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 8, left: 2, bottom: 2, right: 2)
-            layout.itemSize = CGSize(width: 40, height: 40)
-            defaultColorsView?.collectionViewLayout = layout
+       // if defaultColorDelegate.colors.count > 0 {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 2, bottom: 2, right: 2)
+        layout.itemSize = CGSize(width: 40, height: 40)
+        defaultColorsView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
             defaultColorsView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: EFDefaultColors.cellId)
+        defaultColorsView?.backgroundColor = UIColor.white
             defaultColorsView?.delegate = defaultColorDelegate
             defaultColorsView?.dataSource = defaultColorDelegate
             self.addSubview(defaultColorsView!)
-        }
+        //}
 
         colorComponentViews = tmp
         self.ef_installConstraints()
-        defaultColorsView?.frame = CGRect(x: 0, y: 300, width: 200, height: 200)
+//        defaultColorsView?.frame = CGRect(x: 0, y: 300, width: 200, height: 200)
     }
 
     @objc @IBAction private func ef_colorComponentDidChangeValue(_ sender: EFColorComponentView) {
@@ -211,18 +213,43 @@ public class EFRGBView: UIView, EFColorView {
 
             previousView = colorComponentView
         }
-
-        views = [
-            "previousView" : previousView
-        ]
-        self.addConstraints(
-            NSLayoutConstraint.constraints(
-                withVisualFormat: "V:[previousView]-(>=margin)-|",
-                options: NSLayoutFormatOptions(rawValue: 0),
-                metrics: metrics,
-                views: views
-            )
-        )
+        
+        defaultColorsView?.translatesAutoresizingMaskIntoConstraints = false
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-margin-[v0]-margin-|", options: NSLayoutFormatOptions(), metrics: metrics, views: ["v0": defaultColorsView!]))
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[label]-slider_margin-[v0]-margin-|", options: NSLayoutFormatOptions(), metrics: metrics, views: ["label": previousView,"v0":defaultColorsView!]))
+        
+//        views = [
+//            "defaultColors" : defaultColorsView!,
+//            "previousView": previousView
+//        ]
+//
+//        let visualFormatsForDefault = [
+//            "H:|-margin-[defaultColors]-margin-|",
+//            "V:|[previousView]-margin-[defaultColors]"
+//        ]
+//        for visualFormat in visualFormatsForDefault {
+//            self.addConstraints(
+//                NSLayoutConstraint.constraints(
+//                    withVisualFormat: visualFormat,
+//                    options: NSLayoutFormatOptions(rawValue: 0),
+//                    metrics: metrics,
+//                    views: views
+//                )
+//            )
+//        }
+//        previousView = defaultColorsView!
+//
+//        views = [
+//            "previousView" : previousView
+//        ]
+//        self.addConstraints(
+//            NSLayoutConstraint.constraints(
+//                withVisualFormat: "V:[previousView]-(>=margin)-|",
+//                options: NSLayoutFormatOptions(rawValue: 0),
+//                metrics: metrics,
+//                views: views
+//            )
+//        )
     }
 
     private func ef_colorComponentsWithRGB(rgb: RGB) -> [CGFloat] {

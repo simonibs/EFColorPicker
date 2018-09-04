@@ -18,6 +18,7 @@
 		739323DF32643950A32047225485B73F /* EFControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07640F74A4A7E8420FA754F4AF3E907F /* EFControl.swift */; };
 		763ACE1864FEF45B41F1D6CB5EE28F8A /* EFColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047FFA76A1ADB29E3D981D52470BA79C /* EFColorUtils.swift */; };
 		77B4B578BC2F689A42FF691E603C75F8 /* EFColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2FF785FEC2FEDB9A520F91D55BA53C /* EFColorView.swift */; };
+		7A49CFBA213EA6AF00B1BC5E /* EFDefaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A49CFB9213EA6AF00B1BC5E /* EFDefaultColors.swift */; };
 		7F4D294E76C85B286CE07C3B1D769E47 /* EFSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6CBF2188718B6E1AACA2CFF503E500 /* EFSliderView.swift */; };
 		7FAF05E942A7481224BD3D191D8A5184 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
 		96B6ECF18363C92ECE776EC8E1435BD8 /* Pods-EFColorPicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B4DC3D9E1D39BAF780877BAB090A652 /* Pods-EFColorPicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,7 +27,6 @@
 		C1A603FBB8B8BD9929411FB062BE8EB3 /* EFHSBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64223374E7E098EDB62BBC65F991684F /* EFHSBView.swift */; };
 		CF53FBCBF47F239C3B1FA55350335C4A /* EFThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB6323AB69C4AFC6BC2ED2CC7C455A9 /* EFThumbView.swift */; };
 		E2A89A25B729C4806D9E293ECCC372A8 /* EFColorComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FDB12F7F75DA4AB8843BD2CBB412CB /* EFColorComponentView.swift */; };
-		FB499D2E213E482500D40B65 /* EFDefaultColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB499D2D213E482500D40B65 /* EFDefaultColors.swift */; };
 		FEE57165C69AA8F6C40A98E7B15FE8DD /* EFRGBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798F3FD92C23A2F1DC4F1514E1870CB /* EFRGBView.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +70,7 @@
 		64223374E7E098EDB62BBC65F991684F /* EFHSBView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EFHSBView.swift; path = EFColorPicker/Classes/EFHSBView.swift; sourceTree = "<group>"; };
 		6B5A38FFC34CECFE7DB7EDBAF765CA41 /* EFColorPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EFColorPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BB6323AB69C4AFC6BC2ED2CC7C455A9 /* EFThumbView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EFThumbView.swift; path = EFColorPicker/Classes/EFThumbView.swift; sourceTree = "<group>"; };
+		7A49CFB9213EA6AF00B1BC5E /* EFDefaultColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EFDefaultColors.swift; sourceTree = "<group>"; };
 		7CF946F7847B151A082B74204BDED6C3 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7E4D20C220F2331355E3339A5C50779B /* Pods-EFColorPicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EFColorPicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		83F798D2D697CB23EB22CCF60C47CF6F /* EFColorSelectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EFColorSelectionViewController.swift; path = EFColorPicker/Classes/EFColorSelectionViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +93,6 @@
 		E22B470AFE725D0717CE442078C74D1D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E7784AD0D8A9F477DE969D4C38B1F55A /* EFColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EFColorPicker.modulemap; sourceTree = "<group>"; };
 		F7680E4E1A2644F21040588CAFC8921E /* Pods-EFColorPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EFColorPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		FB499D2D213E482500D40B65 /* EFDefaultColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFDefaultColors.swift; sourceTree = "<group>"; };
 		FF26860FA57393F772F12E5EF1A46571 /* Pods-EFColorPicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EFColorPicker_Tests.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,6 +127,7 @@
 		497B018DED05865C28A24156131803B6 /* EFColorPicker */ = {
 			isa = PBXGroup;
 			children = (
+				7A49CFB9213EA6AF00B1BC5E /* EFDefaultColors.swift */,
 				D2FDB12F7F75DA4AB8843BD2CBB412CB /* EFColorComponentView.swift */,
 				8922FB823068DB8AEF86BEDB904021B7 /* EFColorSelectionView.swift */,
 				83F798D2D697CB23EB22CCF60C47CF6F /* EFColorSelectionViewController.swift */,
@@ -140,7 +141,6 @@
 				6BB6323AB69C4AFC6BC2ED2CC7C455A9 /* EFThumbView.swift */,
 				4C3348005B9543DB33C786B93FDCD1BC /* Pod */,
 				D3426CD77CD80C6206980620FA1EDCB3 /* Support Files */,
-				FB499D2D213E482500D40B65 /* EFDefaultColors.swift */,
 			);
 			name = EFColorPicker;
 			path = ../..;
@@ -386,7 +386,7 @@
 			files = (
 				E2A89A25B729C4806D9E293ECCC372A8 /* EFColorComponentView.swift in Sources */,
 				3CD04619A468A8D3CFBB8DCA157ACF8B /* EFColorPicker-dummy.m in Sources */,
-				FB499D2E213E482500D40B65 /* EFDefaultColors.swift in Sources */,
+				7A49CFBA213EA6AF00B1BC5E /* EFDefaultColors.swift in Sources */,
 				129440BB9F115E0C87AD58C1A5CE6C24 /* EFColorSelectionView.swift in Sources */,
 				BE671125912C92D6855EB4602AED6C14 /* EFColorSelectionViewController.swift in Sources */,
 				763ACE1864FEF45B41F1D6CB5EE28F8A /* EFColorUtils.swift in Sources */,
