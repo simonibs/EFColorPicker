@@ -26,7 +26,7 @@ class EFDefaultColors: NSObject, UICollectionViewDelegate, UICollectionViewDataS
     
     private func setup() {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 2, bottom: 2, right: 2)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.itemSize = CGSize(width: 40, height: 40)
         colorsCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         colorsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
