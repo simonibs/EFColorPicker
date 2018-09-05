@@ -44,7 +44,4 @@ public protocol EFColorView: class {
 
     // The current color.
     var color: UIColor { get set }
-    
-    // The default colors
-    var defaultColors: [UIColor] { get set }
 }

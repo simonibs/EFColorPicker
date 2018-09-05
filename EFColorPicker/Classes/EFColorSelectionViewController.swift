@@ -52,7 +52,7 @@ public class EFColorSelectionViewController: UIViewController, EFColorViewDelega
     }
     
     public func setDefaultColors(_ defaultColors: [UIColor]) {
-        self.colorSelectionView().defaultColors = defaultColors
+        self.colorSelectionView().setDefaultColors(defaultColors)
     }
 
     // Whether colorTextField will hide, default is `true`

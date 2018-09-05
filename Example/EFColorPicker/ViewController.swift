@@ -88,7 +88,19 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         colorSelectionController.isColorTextFieldHidden = isColorTextFieldHidden
         colorSelectionController.delegate = self
         colorSelectionController.color = self.view.backgroundColor ?? UIColor.white
-        colorSelectionController.setDefaultColors(EFDefaultColors.predefined)
+        let defaultColors: [UIColor] = [
+            UIColor.white,
+            UIColor.black,
+            UIColor.red,
+            UIColor.green,
+            UIColor.blue,
+            UIColor.cyan,
+            UIColor.yellow,
+            UIColor.magenta,
+            UIColor.brown,
+            UIColor.gray
+        ]
+        colorSelectionController.setDefaultColors(defaultColors)
 
         if UIUserInterfaceSizeClass.compact == self.traitCollection.horizontalSizeClass {
             let doneBtn: UIBarButtonItem = UIBarButtonItem(

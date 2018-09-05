@@ -52,14 +52,8 @@ public class EFColorSelectionView: UIView, EFColorView, EFColorViewDelegate {
         }
     }
     
-    public var defaultColors: [UIColor] {
-        get {
-            return self.selectedView()?.defaultColors ?? []
-        }
-        set {
-            self.rgbColorView.defaultColors = newValue
-            self.hsbColorView.defaultColors = newValue
-        }
+    public func setDefaultColors(_ defaultColors: [UIColor]) {
+        self.rgbColorView.setDefaultColors(defaultColors)
     }
 
     override init(frame: CGRect) {

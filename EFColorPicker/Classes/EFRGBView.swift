@@ -39,8 +39,7 @@ public class EFRGBView: UIView, EFColorView {
 
     weak public var delegate: EFColorViewDelegate?
     
-    private var defaultColorsView: UICollectionView?
-    private var defaultColorDelegate = EFDefaultColors()
+    private var defaultColorsDelegate = EFDefaultColors()
 
     public var color: UIColor {
         get {
@@ -57,16 +56,10 @@ public class EFRGBView: UIView, EFColorView {
         }
     }
     
-    public var defaultColors: [UIColor] {
-        get {
-            return defaultColorDelegate.colors
-        }
-        set {
-            defaultColorDelegate.setColors(colors: newValue)
-            print("EFRGBView", newValue)
-            defaultColorsView?.reloadData()
-            self.ef_installConstraints()
-        }
+    public func setDefaultColors(_ defaultColors: [UIColor]) {
+        defaultColorsDelegate.setColors(colors: defaultColors)
+        defaultColorsDelegate.delegate = self
+        self.ef_installConstraints()
     }
 
     override init(frame: CGRect) {
@@ -114,22 +107,10 @@ public class EFRGBView: UIView, EFColorView {
             )
             tmp.append(colorComponentView)
         }
-        print("defaultColorDelegate", defaultColorDelegate.colors)
-       // if defaultColorDelegate.colors.count > 0 {
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 8, left: 2, bottom: 2, right: 2)
-        layout.itemSize = CGSize(width: 40, height: 40)
-        defaultColorsView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-            defaultColorsView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: EFDefaultColors.cellId)
-        defaultColorsView?.backgroundColor = UIColor.white
-            defaultColorsView?.delegate = defaultColorDelegate
-            defaultColorsView?.dataSource = defaultColorDelegate
-            self.addSubview(defaultColorsView!)
-        //}
+        self.addSubview(defaultColorsDelegate.colorsCollectionView)
 
         colorComponentViews = tmp
         self.ef_installConstraints()
-//        defaultColorsView?.frame = CGRect(x: 0, y: 300, width: 200, height: 200)
     }
 
     @objc @IBAction private func ef_colorComponentDidChangeValue(_ sender: EFColorComponentView) {
@@ -214,42 +195,27 @@ public class EFRGBView: UIView, EFColorView {
             previousView = colorComponentView
         }
         
-        defaultColorsView?.translatesAutoresizingMaskIntoConstraints = false
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-margin-[v0]-margin-|", options: NSLayoutFormatOptions(), metrics: metrics, views: ["v0": defaultColorsView!]))
-        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[label]-slider_margin-[v0]-margin-|", options: NSLayoutFormatOptions(), metrics: metrics, views: ["label": previousView,"v0":defaultColorsView!]))
-        
-//        views = [
-//            "defaultColors" : defaultColorsView!,
-//            "previousView": previousView
-//        ]
-//
-//        let visualFormatsForDefault = [
-//            "H:|-margin-[defaultColors]-margin-|",
-//            "V:|[previousView]-margin-[defaultColors]"
-//        ]
-//        for visualFormat in visualFormatsForDefault {
-//            self.addConstraints(
-//                NSLayoutConstraint.constraints(
-//                    withVisualFormat: visualFormat,
-//                    options: NSLayoutFormatOptions(rawValue: 0),
-//                    metrics: metrics,
-//                    views: views
-//                )
-//            )
-//        }
-//        previousView = defaultColorsView!
-//
-//        views = [
-//            "previousView" : previousView
-//        ]
-//        self.addConstraints(
-//            NSLayoutConstraint.constraints(
-//                withVisualFormat: "V:[previousView]-(>=margin)-|",
-//                options: NSLayoutFormatOptions(rawValue: 0),
-//                metrics: metrics,
-//                views: views
-//            )
-//        )
+        if let defaultColorsView = defaultColorsDelegate.colorsCollectionView  {
+            defaultColorsView.translatesAutoresizingMaskIntoConstraints = false
+            let visualFormats = [
+                "H:|-margin-[defaultColorsView]-margin-|",
+                "V:[previousView]-slider_margin-[defaultColorsView]-margin-|"
+            ]
+            views = [
+                "previousView" : previousView,
+                "defaultColorsView" : defaultColorsView
+            ]
+            for visualFormat in visualFormats {
+                self.addConstraints(
+                    NSLayoutConstraint.constraints(
+                        withVisualFormat: visualFormat,
+                        options: NSLayoutFormatOptions(rawValue: 0),
+                        metrics: metrics,
+                        views: views
+                    )
+                )
+            }
+        }
     }
 
     private func ef_colorComponentsWithRGB(rgb: RGB) -> [CGFloat] {
@@ -288,5 +254,11 @@ public class EFRGBView: UIView, EFColorView {
         let end: UIColor = UIColor(red: colors[8], green: colors[9], blue: colors[10], alpha: 1)
 
         return [start.cgColor, middle.cgColor, end.cgColor]
+    }
+}
+
+extension EFRGBView: EFDefaultColorsDelegate {
+    func defaultColorSelected(_ selected: UIColor) {
+        self.delegate?.colorView(colorView: self, didChangeColor: selected)
     }
 }

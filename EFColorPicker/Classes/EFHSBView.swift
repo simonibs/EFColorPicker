@@ -42,8 +42,6 @@ public class EFHSBView: UIView, EFColorView, UITextFieldDelegate {
 
     weak public var delegate: EFColorViewDelegate?
     
-    private var defaultColorDelegate = EFDefaultColors()
-
     public var color: UIColor {
         get {
             return UIColor(
@@ -56,15 +54,6 @@ public class EFHSBView: UIView, EFColorView, UITextFieldDelegate {
         set {
             colorComponents = EFRGB2HSB(rgb: EFRGBColorComponents(color: newValue))
             self.reloadData()
-        }
-    }
-    
-    public var defaultColors: [UIColor] {
-        get {
-            return defaultColorDelegate.colors
-        }
-        set {
-            defaultColorDelegate.setColors(colors: newValue)
         }
     }
 
@@ -116,7 +105,7 @@ public class EFHSBView: UIView, EFColorView, UITextFieldDelegate {
         brightnessView.addTarget(
             self, action: #selector(ef_brightnessDidChangeValue(sender:)), for: UIControlEvents.valueChanged
         )
-
+        
         self.setNeedsUpdateConstraints()
     }
 
@@ -191,7 +180,7 @@ public class EFHSBView: UIView, EFColorView, UITextFieldDelegate {
         let visualFormats = [
             "H:|-margin-[colorSample]-margin-|",
             "H:|-margin-[colorWheel(>=color_wheel_dimension)]-margin-[brightnessView]-(margin@500)-|",
-            "V:|-margin-[colorSample(height)]-margin-[colorWheel]-(margin@500)-|"
+            "V:|-margin-[colorSample(height)]-margin-[colorWheel]-margin-(margin@500)-|"
         ]
         for visualFormat in visualFormats {
             layoutConstraints.append(
