@@ -197,9 +197,11 @@ public class EFRGBView: UIView, EFColorView {
         
         if let defaultColorsView = defaultColorsDelegate.colorsCollectionView  {
             defaultColorsView.translatesAutoresizingMaskIntoConstraints = false
+            let viewHeight = EFDefaultColorsConfig.viewHeight
+            let height = viewHeight != EFDefaultColorsConfig.VIEW_HEIGHT ? "(\(viewHeight))" : ""
             let visualFormats = [
                 "H:|-margin-[defaultColorsView]-margin-|",
-                "V:[previousView]-slider_margin-[defaultColorsView]-margin-|"
+                "V:[previousView]-slider_margin-[defaultColorsView\(height)]-margin-|"
             ]
             views = [
                 "previousView" : previousView,

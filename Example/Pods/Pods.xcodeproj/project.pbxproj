@@ -27,6 +27,7 @@
 		C1A603FBB8B8BD9929411FB062BE8EB3 /* EFHSBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64223374E7E098EDB62BBC65F991684F /* EFHSBView.swift */; };
 		CF53FBCBF47F239C3B1FA55350335C4A /* EFThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB6323AB69C4AFC6BC2ED2CC7C455A9 /* EFThumbView.swift */; };
 		E2A89A25B729C4806D9E293ECCC372A8 /* EFColorComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FDB12F7F75DA4AB8843BD2CBB412CB /* EFColorComponentView.swift */; };
+		FB8FE30A2148BCE100B2C3BD /* EFDefaultColorsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FE3092148BCE100B2C3BD /* EFDefaultColorsConfig.swift */; };
 		FEE57165C69AA8F6C40A98E7B15FE8DD /* EFRGBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3798F3FD92C23A2F1DC4F1514E1870CB /* EFRGBView.swift */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +94,7 @@
 		E22B470AFE725D0717CE442078C74D1D /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		E7784AD0D8A9F477DE969D4C38B1F55A /* EFColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = EFColorPicker.modulemap; sourceTree = "<group>"; };
 		F7680E4E1A2644F21040588CAFC8921E /* Pods-EFColorPicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EFColorPicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		FB8FE3092148BCE100B2C3BD /* EFDefaultColorsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EFDefaultColorsConfig.swift; path = EFColorPicker/Classes/EFDefaultColorsConfig.swift; sourceTree = "<group>"; };
 		FF26860FA57393F772F12E5EF1A46571 /* Pods-EFColorPicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EFColorPicker_Tests.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				6BB6323AB69C4AFC6BC2ED2CC7C455A9 /* EFThumbView.swift */,
 				4C3348005B9543DB33C786B93FDCD1BC /* Pod */,
 				D3426CD77CD80C6206980620FA1EDCB3 /* Support Files */,
+				FB8FE3092148BCE100B2C3BD /* EFDefaultColorsConfig.swift */,
 			);
 			name = EFColorPicker;
 			path = ../..;
@@ -386,6 +389,7 @@
 			files = (
 				E2A89A25B729C4806D9E293ECCC372A8 /* EFColorComponentView.swift in Sources */,
 				3CD04619A468A8D3CFBB8DCA157ACF8B /* EFColorPicker-dummy.m in Sources */,
+				FB8FE30A2148BCE100B2C3BD /* EFDefaultColorsConfig.swift in Sources */,
 				7A67BB4C213FF64300C61213 /* EFDefaultColors.swift in Sources */,
 				129440BB9F115E0C87AD58C1A5CE6C24 /* EFColorSelectionView.swift in Sources */,
 				BE671125912C92D6855EB4602AED6C14 /* EFColorSelectionViewController.swift in Sources */,

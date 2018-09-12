@@ -72,6 +72,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
 
     // Programmatically
     @IBAction func onButtonClick(_ sender: UIButton) {
+        EFDefaultColorsConfig.viewHeight = 200
+        EFDefaultColorsConfig.blockSize = 30
         let colorSelectionController = EFColorSelectionViewController()
 
         let navCtrl = UINavigationController(rootViewController: colorSelectionController)
@@ -84,7 +86,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         navCtrl.preferredContentSize = colorSelectionController.view.systemLayoutSizeFitting(
             UILayoutFittingCompressedSize
         )
-
         colorSelectionController.isColorTextFieldHidden = isColorTextFieldHidden
         colorSelectionController.delegate = self
         colorSelectionController.color = self.view.backgroundColor ?? UIColor.white
