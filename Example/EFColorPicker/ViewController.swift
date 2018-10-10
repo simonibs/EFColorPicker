@@ -84,7 +84,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         navCtrl.popoverPresentationController?.sourceView = sender
         navCtrl.popoverPresentationController?.sourceRect = sender.bounds
         navCtrl.preferredContentSize = colorSelectionController.view.systemLayoutSizeFitting(
-            UILayoutFittingCompressedSize
+            UIView.layoutFittingCompressedSize
         )
         colorSelectionController.isColorTextFieldHidden = isColorTextFieldHidden
         colorSelectionController.delegate = self
@@ -106,7 +106,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         if UIUserInterfaceSizeClass.compact == self.traitCollection.horizontalSizeClass {
             let doneBtn: UIBarButtonItem = UIBarButtonItem(
                 title: NSLocalizedString("Done", comment: ""),
-                style: UIBarButtonItemStyle.done,
+                style: UIBarButtonItem.Style.done,
                 target: self,
                 action: #selector(ef_dismissViewController(sender:))
             )
@@ -121,7 +121,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
             guard let destNav: UINavigationController = segue.destination as? UINavigationController else {
                 return
             }
-            if let size = destNav.visibleViewController?.view.systemLayoutSizeFitting(UILayoutFittingCompressedSize) {
+            if let size = destNav.visibleViewController?.view.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize) {
                 destNav.preferredContentSize = size
             }
             destNav.popoverPresentationController?.delegate = self
@@ -133,7 +133,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                 if UIUserInterfaceSizeClass.compact == self.traitCollection.horizontalSizeClass {
                     let doneBtn: UIBarButtonItem = UIBarButtonItem(
                         title: NSLocalizedString("Done", comment: ""),
-                        style: UIBarButtonItemStyle.done,
+                        style: UIBarButtonItem.Style.done,
                         target: self,
                         action: #selector(ef_dismissViewController(sender:))
                     )

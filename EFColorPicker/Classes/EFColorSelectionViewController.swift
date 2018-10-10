@@ -86,7 +86,7 @@ public class EFColorSelectionViewController: UIViewController, EFColorViewDelega
         segmentControl.addTarget(
             self,
             action: #selector(segmentControlDidChangeValue(_:)),
-            for: UIControlEvents.valueChanged
+            for: UIControl.Event.valueChanged
         )
         segmentControl.selectedSegmentIndex = 0
         self.navigationItem.titleView = segmentControl

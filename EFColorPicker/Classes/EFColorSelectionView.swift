@@ -101,7 +101,7 @@ public class EFColorSelectionView: UIView, EFColorView, EFColorViewDelegate {
                 self.addConstraints(
                     NSLayoutConstraint.constraints(
                         withVisualFormat: visualFormat,
-                        options: NSLayoutFormatOptions(rawValue: 0),
+                        options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                         metrics: nil,
                         views: views
                     )

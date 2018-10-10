@@ -103,7 +103,7 @@ public class EFRGBView: UIView, EFColorView {
             )
             self.addSubview(colorComponentView)
             colorComponentView.addTarget(
-                self, action: #selector(ef_colorComponentDidChangeValue(_:)), for: UIControlEvents.valueChanged
+                self, action: #selector(ef_colorComponentDidChangeValue(_:)), for: UIControl.Event.valueChanged
             )
             tmp.append(colorComponentView)
         }
@@ -163,7 +163,7 @@ public class EFRGBView: UIView, EFColorView {
             self.addConstraints(
                 NSLayoutConstraint.constraints(
                     withVisualFormat: visualFormat,
-                    options: NSLayoutFormatOptions(rawValue: 0),
+                    options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                     metrics: metrics,
                     views: views
                 )
@@ -185,7 +185,7 @@ public class EFRGBView: UIView, EFColorView {
                 self.addConstraints(
                     NSLayoutConstraint.constraints(
                         withVisualFormat: visualFormat,
-                        options: NSLayoutFormatOptions(rawValue: 0),
+                        options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                         metrics: metrics,
                         views: views
                     )
@@ -211,7 +211,7 @@ public class EFRGBView: UIView, EFColorView {
                 self.addConstraints(
                     NSLayoutConstraint.constraints(
                         withVisualFormat: visualFormat,
-                        options: NSLayoutFormatOptions(rawValue: 0),
+                        options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                         metrics: metrics,
                         views: views
                     )
